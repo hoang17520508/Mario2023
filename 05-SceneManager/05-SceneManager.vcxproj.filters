@@ -147,4 +147,33 @@
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="brick.txt">
+      <Filter>Source Files</Filter>
+    </Text>
+    <Text Include="cloud.txt">
+      <Filter>Source Files</Filter>
+    </Text>
+    <Text Include="coin.txt">
+      <Filter>Source Files</Filter>
+    </Text>
+    <Text Include="goomba.txt">
+      <Filter>Source Files</Filter>
+    </Text>
+    <Text Include="mario.txt">
+      <Filter>Source Files</Filter>
+    </Text>
+    <Text Include="mario-sample.txt">
+      <Filter>Source Files</Filter>
+    </Text>
+    <Text Include="scene01.txt">
+      <Filter>Source Files</Filter>
+    </Text>
+    <Text Include="scene02.txt">
+      <Filter>Source Files</Filter>
+    </Text>
+    <Text Include="scene0005.txt">
+      <Filter>Source Files</Filter>
+    </Text>
+  </ItemGroup>
 </Project>

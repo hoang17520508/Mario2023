@@ -1,4 +1,5 @@
 # list of object assets to load in this scene
+# platform type x y chieuRong chieuCao soluong spriteBatDau spriteKetThuc
 [ASSETS]
 mario.txt
 brick.txt
@@ -56,8 +57,6 @@ cloud.txt
 2	300	10
 
 #Platform
-5	90	136	16	15	16	51000	52000	53000
-5	120	90	16	16	8	20001	20001	20001
+5	0	180	10	16	40	20002	20002	20002
+5	0	195	10	16	40	20002	20002	20002
 
-#Portal 
-50	300	110	316	140	2
