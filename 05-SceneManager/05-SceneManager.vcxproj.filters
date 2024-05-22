@@ -78,6 +78,9 @@
     <ClCompile Include="QuestionBrick.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Pipe.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -152,6 +155,9 @@
     <ClInclude Include="QuestionBrick.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Pipe.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="brick.txt">
@@ -184,5 +190,6 @@
     <Text Include="question_brick.txt">
       <Filter>Source Files</Filter>
     </Text>
+    <Text Include="pipe.txt" />
   </ItemGroup>
 </Project>

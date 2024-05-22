@@ -7,6 +7,7 @@ coin.txt
 goomba.txt
 cloud.txt
 question_brick.txt
+pipe.txt
 #
 [OBJECTS]
 # type	x	y	extra_settings per object type
@@ -59,6 +60,9 @@ question_brick.txt
 8	156	130
 8	188	80
 8	204	80
+
+# Pipe
+9	260	160
 
 #Goomba
 2	300	10
