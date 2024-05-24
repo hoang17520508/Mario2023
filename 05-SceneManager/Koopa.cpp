@@ -51,7 +51,7 @@ void CKoopa::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 {
 	vy += ay * dt;
 	vx += ax * dt;
-
+	
 	if ((state == KOOPA_STATE_DIE) && (GetTickCount64() - die_start > KOOPA_DIE_TIMEOUT))
 	{
 		isDeleted = true;
@@ -69,6 +69,11 @@ void CKoopa::Render()
 	if (state == KOOPA_STATE_DIE)
 	{
 		aniId = ID_ANI_KOOPA_DIE;
+	}
+	if (state == KOOPA_STATE_WALKING)
+	{
+		if (vx < 0)  aniId = ID_ANI_KOOPA_WALKING;
+		if (vx > 0)  aniId = ID_ANI_KOOPA_WALKING_RIGHT;
 	}
 
 	CAnimations::GetInstance()->Get(aniId)->Render(x, y);
