@@ -8,6 +8,7 @@ goomba.txt
 cloud.txt
 question_brick.txt
 pipe.txt
+koopa.txt
 #
 [OBJECTS]
 # type	x	y	extra_settings per object type
@@ -66,6 +67,9 @@ pipe.txt
 
 #Goomba
 2	300	10
+
+# Koopas
+10	320	40
 
 #Platform
 5	0	180	10	16	40	20001	20001	20001
