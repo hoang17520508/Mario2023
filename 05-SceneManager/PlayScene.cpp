@@ -11,6 +11,7 @@
 #include "Platform.h"
 #include "Pipe.h"
 #include "Koopa.h"
+#include "Background.h"
 
 #include "SampleKeyEventHandler.h"
 
@@ -32,7 +33,7 @@ CPlayScene::CPlayScene(int id, LPCWSTR filePath):
 #define ASSETS_SECTION_SPRITES 1
 #define ASSETS_SECTION_ANIMATIONS 2
 
-#define MAX_SCENE_LINE 1024
+#define MAX_SCENE_LINE 102400
 
 void CPlayScene::_ParseSection_SPRITES(string line)
 {
@@ -118,6 +119,7 @@ void CPlayScene::_ParseSection_OBJECTS(string line)
 
 		DebugOut(L"[INFO] Player object has been created!\n");
 		break;
+	case OBJECT_TYPE_BACKGROUND: obj = new CBackground(x, y); break;
 	case OBJECT_TYPE_GOOMBA: obj = new CGoomba(x, y); break;
 	case OBJECT_TYPE_KOOPA: obj = new CKoopa(x, y); break;
 	case OBJECT_TYPE_BRICK: obj = new CBrick(x,y); break;
@@ -265,7 +267,7 @@ void CPlayScene::Update(DWORD dt)
 
 	if (cx < 0) cx = 0;
 
-	CGame::GetInstance()->SetCamPos(cx, 0.0f /*cy*/);
+	CGame::GetInstance()->SetCamPos(cx, 0 /*620.0f*/ /*cy*/);
 
 	PurgeDeletedObjects();
 }

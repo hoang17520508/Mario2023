@@ -84,6 +84,9 @@
     <ClCompile Include="Koopa.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Background.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -164,6 +167,9 @@
     <ClInclude Include="Koopa.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Background.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="brick.txt">
@@ -200,5 +206,6 @@
     <Text Include="koopa.txt">
       <Filter>Source Files</Filter>
     </Text>
+    <Text Include="background.txt" />
   </ItemGroup>
 </Project>
