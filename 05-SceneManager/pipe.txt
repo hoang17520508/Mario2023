@@ -1,8 +1,7 @@
 # id	left	top	right	bottom	texture_id
 [SPRITES]
 # Pipe only
-110001	4	86	36	120	50
-
+110001	2	27	34	75	80
 
 
 # ani_id	sprite1_id	time1	sprite2_id	time2	...

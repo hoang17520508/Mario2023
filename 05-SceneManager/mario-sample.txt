@@ -21,3 +21,4 @@ height	240
 50	textures\enemies.png
 60	textures\background.png
 70	textures\misc3.png
+80	textures\misc2-removebg.png

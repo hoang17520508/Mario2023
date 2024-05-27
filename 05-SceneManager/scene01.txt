@@ -23,32 +23,40 @@ background.txt
 0	20	10
 
 # BRICKS
-1	0	148
-1	0	164
-1	352	148
-1	352	164
+
 
 #COIN
-8	200	120
-8	220	120
-4	240	120
-4	260	120
-4	280	120
+
 
 # QuestionBrick
-8	140	130
-8	156	130
-8	188	80
-8	204	80
+8	170	130
+8	186	130
+
+8	220	80
+8	236	80
+
+8	650	162	
+8	740	105	
+
 
 # Pipe
-9	260	160
+9	352	160
 
 #Goomba
-2	300	10
+# 2 goomba dau map(cách ong cong)
+2	200	160
+2	450	160
+
+
+# 2 goomba satnhau gan cuoi map
+
+2	800	160
+2	850	160
+# 1 goomba wing cuoi map => handle wing later
+2	1040	160
 
 # Koopas
-10	320	40
+10	480	160
 
 #Platform
 5	0	192	16	16	39	1000010	1000020	1000030
