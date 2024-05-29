@@ -93,7 +93,7 @@ background.txt
 2	800	160
 2	850	160
 # 1 goomba wing cuoi map => handle wing later
-2	1040	160
+20	1040	160
 
 # Koopas
 10	480	160

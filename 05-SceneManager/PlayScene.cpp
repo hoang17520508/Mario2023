@@ -14,6 +14,7 @@
 #include "Koopa.h"
 #include "Background.h"
 #include "SpecialPlatform.h"
+#include "WingGoomba.h"
 
 #include "SampleKeyEventHandler.h"
 
@@ -123,6 +124,7 @@ void CPlayScene::_ParseSection_OBJECTS(string line)
 		break;
 	case OBJECT_TYPE_BACKGROUND: obj = new CBackground(x, y); break;
 	case OBJECT_TYPE_GOOMBA: obj = new CGoomba(x, y); break;
+	case OBJECT_TYPE_WING_GOOMBA: obj = new CWingGoomba(x, y); break;
 	case OBJECT_TYPE_KOOPA: obj = new CKoopa(x, y); break;
 	case OBJECT_TYPE_BRICK: obj = new CBrick(x,y); break;
 	case OBJECT_TYPE_QUESTION_BRICK: obj = new CQuestionBrick(x, y); break;
