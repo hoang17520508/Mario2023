@@ -87,6 +87,12 @@
     <ClCompile Include="Background.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="SpecialPlatform.h">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SpecialPlatform.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
