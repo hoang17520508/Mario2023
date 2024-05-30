@@ -1,11 +1,11 @@
-#include "SpecialPlatform.h"
+#include "NonBlockingPlatform.h"
 
 #include "Sprite.h"
 #include "Sprites.h"
 
 #include "Textures.h"
 
-void CSpecialPlatform::RenderBoundingBox()
+void CNonBlockingPlatform::RenderBoundingBox()
 {
 	D3DXVECTOR3 p(x, y, 0);
 	RECT rect;
@@ -28,7 +28,7 @@ void CSpecialPlatform::RenderBoundingBox()
 	CGame::GetInstance()->Draw(xx - cx, y - cy, bbox, nullptr, TRANSPARENT_COLOR, rect.right - 1, rect.bottom - 1);
 }
 
-void CSpecialPlatform::Render()
+void CNonBlockingPlatform::Render()
 {
 	if (this->length <= 0) return;
 	float xx = x;
@@ -47,7 +47,7 @@ void CSpecialPlatform::Render()
 	RenderBoundingBox();
 }
 
-void CSpecialPlatform::GetBoundingBox(float& l, float& t, float& r, float& b)
+void CNonBlockingPlatform::GetBoundingBox(float& l, float& t, float& r, float& b)
 {
 	float cellWidth_div_2 = this->cellWidth / 2;
 	l = x - cellWidth_div_2;
