@@ -2,8 +2,14 @@
 
 void CQuestionBrick::Render()
 {
+	int id_ani = ID_ANI_QUESTION_BRICK;
 	CAnimations* animations = CAnimations::GetInstance();
-	animations->Get(ID_ANI_QUESTION_BRICK)->Render(x, y);
+	if (state == QUESTION_BRICK_STATE_DISABLE)
+	{
+		id_ani = ID_ANI_QUESTION_BRICK_DISABLE;
+	}
+
+	animations->Get(id_ani)->Render(x, y);
 	//RenderBoundingBox();
 }
 

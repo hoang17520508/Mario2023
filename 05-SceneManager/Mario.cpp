@@ -7,6 +7,7 @@
 #include "Goomba.h"
 #include "Coin.h"
 #include "Portal.h"
+#include "QuestionBrick.h"
 
 #include "Collision.h"
 
@@ -52,6 +53,8 @@ void CMario::OnCollisionWith(LPCOLLISIONEVENT e)
 		OnCollisionWithGoomba(e);
 	else if (dynamic_cast<CCoin*>(e->obj))
 		OnCollisionWithCoin(e);
+	else if (dynamic_cast<CQuestionBrick*>(e->obj))
+		OnCollisionWithQuestionBrick(e);
 	else if (dynamic_cast<CPortal*>(e->obj))
 		OnCollisionWithPortal(e);
 }
@@ -90,8 +93,24 @@ void CMario::OnCollisionWithGoomba(LPCOLLISIONEVENT e)
 	}
 }
 
+
+void CMario::OnCollisionWithQuestionBrick(LPCOLLISIONEVENT e)
+{
+	CQuestionBrick* question_brick = dynamic_cast<CQuestionBrick*>(e->obj);
+	// touch bottom question brick
+	if (e->ny > 0)
+	{
+		e->obj->SetState(2);
+		DebugOut(L">>> Mario touch bottom question brick >>> \n");
+	}
+	
+}
+
+
+
 void CMario::OnCollisionWithCoin(LPCOLLISIONEVENT e)
 {
+	DebugOut(L">>> Mario touch coin >>> \n");
 	e->obj->Delete();
 	coin++;
 }
