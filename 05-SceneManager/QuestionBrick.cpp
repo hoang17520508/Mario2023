@@ -1,5 +1,6 @@
 #include "QuestionBrick.h"
 #include "Coin.h"
+#include "Mushroom.h"
 #include "PlayScene.h"
 
 void CQuestionBrick::Render()
@@ -32,9 +33,15 @@ void CQuestionBrick::SetState(int state)
 {
 	case QUESTION_BRICK_STATE_COIN:
 	{
-		CCoin* coin = (CCoin*)scene->AddObject(new CCoin(x, y - QUESTION_BRICK_BBOX_HEIGHT / 2));
-		coin->SetPosition(x, y);
-		coin->SetState(2);
+		if (type_question_brick == QUESTION_BRICK_TYPE_MUSHROOM) {
+			CMushroom* mushroom = (CMushroom*)scene->AddObject(new CMushroom(x, y - QUESTION_BRICK_BBOX_HEIGHT / 2));
+		}
+		else {
+			CCoin* coin = (CCoin*)scene->AddObject(new CCoin(x, y - QUESTION_BRICK_BBOX_HEIGHT / 2));
+			coin->SetPosition(x, y);
+			coin->SetState(2);
+		}
+		
 		SetState(QUESTION_BRICK_STATE_DISABLE);
 		is_open = TRUE;
 		break;

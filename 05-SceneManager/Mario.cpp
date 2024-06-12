@@ -57,6 +57,7 @@ void CMario::OnCollisionWith(LPCOLLISIONEVENT e)
 		OnCollisionWithQuestionBrick(e);
 	else if (dynamic_cast<CPortal*>(e->obj))
 		OnCollisionWithPortal(e);
+	// TODO: handle  OnCollisionWithMushroom
 }
 
 void CMario::OnCollisionWithGoomba(LPCOLLISIONEVENT e)

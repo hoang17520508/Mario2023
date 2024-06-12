@@ -12,15 +12,19 @@
 #define QUESTION_BRICK_STATE_COIN 3
 #define QUESTION_BRICK_BBOX_WIDTH 16
 #define QUESTION_BRICK_BBOX_HEIGHT 16
+#define QUESTION_BRICK_TYPE_COIN 1
+#define QUESTION_BRICK_TYPE_MUSHROOM 2
 
 class CQuestionBrick : public CGameObject {
 	BOOLEAN is_open = FALSE;
-	float orginal_y;
+	/*float orginal_y;*/
+	float type_question_brick;
 public:
-	CQuestionBrick(float x, float y) : CGameObject (x, y) 
+	CQuestionBrick(float x, float y, float type = QUESTION_BRICK_TYPE_COIN) : CGameObject (x, y)
 	{
 		is_open = FALSE;
-		orginal_y = y;
+		// orginal_y = y; handle disappear coin later
+		type_question_brick = type;
 	}
 	void Render();
 	void Update(DWORD dt) {}

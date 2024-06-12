@@ -70,11 +70,11 @@ mushroom.txt
 
 
 # QuestionBrick
-8	170	130
+8	170	130	
 8	186	130
 
 8	220	80
-8	236	80
+8	236	80	2
 
 8	650	162	
 8	740	105	
@@ -88,7 +88,6 @@ mushroom.txt
 2	200	160
 2	450	160
 
-11	300	160
 
 
 # 2 goomba satnhau gan cuoi map
