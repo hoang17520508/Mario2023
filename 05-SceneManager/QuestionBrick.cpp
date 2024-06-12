@@ -1,4 +1,6 @@
 #include "QuestionBrick.h"
+#include "Coin.h"
+#include "PlayScene.h"
 
 void CQuestionBrick::Render()
 {
@@ -11,6 +13,33 @@ void CQuestionBrick::Render()
 
 	animations->Get(id_ani)->Render(x, y);
 	//RenderBoundingBox();
+}
+
+void CQuestionBrick::OnNoCollision(DWORD dt)
+{
+	if (!is_open) return;
+
+	x += vx * dt;
+	y += vy * dt;
+
+}
+
+void CQuestionBrick::SetState(int state)
+{
+	CGameObject::SetState(state);
+	LPPLAYSCENE scene = (LPPLAYSCENE)CGame::GetInstance()->GetCurrentScene();
+	switch (state)
+{
+	case QUESTION_BRICK_STATE_COIN:
+	{
+		CCoin* coin = (CCoin*)scene->AddObject(new CCoin(x, y - QUESTION_BRICK_BBOX_HEIGHT / 2));
+		coin->SetPosition(x, y);
+		coin->SetState(2);
+		SetState(QUESTION_BRICK_STATE_DISABLE);
+		is_open = TRUE;
+		break;
+	}	
+}	
 }
 
 void CQuestionBrick::GetBoundingBox(float& l, float& t, float& r, float& b)

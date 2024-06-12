@@ -2,11 +2,52 @@
 
 void CCoin::Render()
 {
+	int ani_id = ID_ANI_COIN;
 	CAnimations* animations = CAnimations::GetInstance();
-	animations->Get(ID_ANI_COIN)->Render(x, y);
+	if (state == COIN_STATE_JUMP)
+	{
+		ani_id = ID_ANI_COIN_JUMP;
+	}
+	animations->Get(ani_id)->Render(x, y);
 
 	//RenderBoundingBox();
 }
+
+
+void CCoin::SetState(int state)
+{
+	CGameObject::SetState(state);
+
+	switch (state)
+	{
+	case COIN_STATE_NORMAL:
+		vx = vy = ax = ay = 0;
+		break;
+	case COIN_STATE_JUMP:
+		vx = 0;
+		ay = 0.003f;
+		vy = -0.58f;
+		break;
+	}
+}
+
+
+void CCoin::Update(DWORD dt, vector<LPGAMEOBJECT>* co_objects)
+{
+	vx += ax * dt;
+	vy += ay * dt;
+
+	CGameObject::Update(dt, co_objects);
+	CCollision::GetInstance()->Process(this, dt, co_objects);
+}
+
+void CCoin::OnNoCollision(DWORD dt)
+{
+	x += vx * dt;
+	y += vy * dt;
+}
+
+
 
 void CCoin::GetBoundingBox(float& l, float& t, float& r, float& b)
 {

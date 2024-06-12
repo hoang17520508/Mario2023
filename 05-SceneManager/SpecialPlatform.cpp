@@ -25,7 +25,7 @@ void CSpecialPlatform::RenderBoundingBox()
 
 	float xx = x - this->cellWidth / 2 + rect.right / 2;
 
-	CGame::GetInstance()->Draw(xx - cx, y - cy, bbox, nullptr, TRANSPARENT_COLOR, rect.right - 1, rect.bottom - 1);
+	CGame::GetInstance()->Draw(xx - cx, y - cy, bbox, nullptr, 0.0, rect.right - 1, rect.bottom - 1);
 }
 
 void CSpecialPlatform::Render()

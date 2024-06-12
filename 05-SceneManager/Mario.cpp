@@ -98,9 +98,10 @@ void CMario::OnCollisionWithQuestionBrick(LPCOLLISIONEVENT e)
 {
 	CQuestionBrick* question_brick = dynamic_cast<CQuestionBrick*>(e->obj);
 	// touch bottom question brick
+	if (question_brick->CheckOpen()) return;
 	if (e->ny > 0)
 	{
-		e->obj->SetState(2);
+		question_brick->OpenQuestionBrick();
 		DebugOut(L">>> Mario touch bottom question brick >>> \n");
 	}
 	
