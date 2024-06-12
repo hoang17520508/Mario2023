@@ -16,6 +16,7 @@
 #include "SpecialPlatform.h"
 #include "NonBlockingPlatform.h"
 #include "WingGoomba.h"
+#include "Mushroom.h"
 
 #include "SampleKeyEventHandler.h"
 
@@ -125,6 +126,7 @@ void CPlayScene::_ParseSection_OBJECTS(string line)
 		break;
 	case OBJECT_TYPE_BACKGROUND: obj = new CBackground(x, y); break;
 	case OBJECT_TYPE_GOOMBA: obj = new CGoomba(x, y); break;
+	case OBJECT_TYPE_MUSHROOM: obj = new CMushroom(x, y); break;
 	case OBJECT_TYPE_WING_GOOMBA: obj = new CWingGoomba(x, y); break;
 	case OBJECT_TYPE_KOOPA: obj = new CKoopa(x, y); break;
 	case OBJECT_TYPE_BRICK: obj = new CBrick(x, y); break;

@@ -10,6 +10,7 @@ question_brick.txt
 pipe.txt
 koopa.txt
 background.txt
+mushroom.txt
 #
 [OBJECTS]
 # type	x	y	extra_settings per object type
@@ -86,6 +87,8 @@ background.txt
 # 2 goomba dau map(cách ong cong)
 2	200	160
 2	450	160
+
+11	300	160
 
 
 # 2 goomba satnhau gan cuoi map
