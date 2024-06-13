@@ -8,6 +8,7 @@
 #include "Coin.h"
 #include "Portal.h"
 #include "QuestionBrick.h"
+#include "Mushroom.h"
 
 #include "Collision.h"
 
@@ -57,6 +58,8 @@ void CMario::OnCollisionWith(LPCOLLISIONEVENT e)
 		OnCollisionWithQuestionBrick(e);
 	else if (dynamic_cast<CPortal*>(e->obj))
 		OnCollisionWithPortal(e);
+	else if (dynamic_cast<CMushroom*>(e->obj))
+		OnCollisionWithMushroom(e);
 	// TODO: handle  OnCollisionWithMushroom
 }
 
@@ -115,6 +118,13 @@ void CMario::OnCollisionWithCoin(LPCOLLISIONEVENT e)
 	DebugOut(L">>> Mario touch coin >>> \n");
 	e->obj->Delete();
 	coin++;
+}
+
+void CMario::OnCollisionWithMushroom(LPCOLLISIONEVENT e)
+{
+	DebugOut(L">>> Mario touch mushroom >>> \n");
+	e->obj->Delete();
+	level = MARIO_LEVEL_BIG;
 }
 
 void CMario::OnCollisionWithPortal(LPCOLLISIONEVENT e)

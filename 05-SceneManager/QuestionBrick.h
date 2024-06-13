@@ -17,13 +17,11 @@
 
 class CQuestionBrick : public CGameObject {
 	BOOLEAN is_open = FALSE;
-	/*float orginal_y;*/
 	float type_question_brick;
 public:
 	CQuestionBrick(float x, float y, float type = QUESTION_BRICK_TYPE_COIN) : CGameObject (x, y)
 	{
 		is_open = FALSE;
-		// orginal_y = y; handle disappear coin later
 		type_question_brick = type;
 	}
 	void Render();
