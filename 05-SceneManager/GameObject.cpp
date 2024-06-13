@@ -38,6 +38,18 @@ void CGameObject::RenderBoundingBox()
 	CGame::GetInstance()->Draw(x - cx, y - cy, bbox, &rect, BBOX_ALPHA);
 }
 
+BOOLEAN CGameObject::CheckInCam() {
+	float cam_x, cam_y;
+	CGame::GetInstance()->GetCamPos(cam_x, cam_y);
+	float l, t, r, b;;
+	GetBoundingBox(l, t, r, b);
+	if (r < cam_x || l > cam_x + 320)
+		return false;
+	if (b  < cam_y || t > cam_y + 240)
+		return false;
+	return true;
+}
+
 CGameObject::~CGameObject()
 {
 

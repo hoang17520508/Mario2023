@@ -259,6 +259,8 @@ int CMario::GetAniIdBig()
 void CMario::Render()
 {
 	CAnimations* animations = CAnimations::GetInstance();
+	// reset position when out screen
+	if (!CheckInCam()) { x = 0; y = 0; };
 	int aniId = -1;
 
 	if (state == MARIO_STATE_DIE)

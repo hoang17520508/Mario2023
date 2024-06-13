@@ -66,6 +66,7 @@ void CKoopa::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 void CKoopa::Render()
 {
 	int aniId = ID_ANI_KOOPA_WALKING;
+	if (!CheckInCam()) return;
 	if (state == KOOPA_STATE_DIE)
 	{
 		aniId = ID_ANI_KOOPA_DIE;
