@@ -52,6 +52,7 @@ void CWingGoomba::OnCollisionWith(LPCOLLISIONEVENT e)
 void CWingGoomba::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 {
 	// hardcode winggoomba in flatform
+	if (!CheckInCam()) return;
 	if (y > 150 && GetTickCount64() - time_jump_start > 2000)
 	{
 			SetState(WINGGOOMBA_STATE_WALKING);
