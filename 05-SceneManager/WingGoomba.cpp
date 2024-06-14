@@ -6,7 +6,8 @@ CWingGoomba::CWingGoomba(float x, float y) :CGameObject(x, y)
 	this->ax = 0;
 	this->ay = WINGGOOMBA_GRAVITY;
 	die_start = -1;
-	SetState(ID_ANI_WINGGOOMBA_WALKING);
+	time_jump_start = 0;
+	SetState(WINGGOOMBA_STATE_WALKING);
 }
 
 void CWingGoomba::GetBoundingBox(float& left, float& top, float& right, float& bottom)
@@ -36,7 +37,7 @@ void CWingGoomba::OnNoCollision(DWORD dt)
 void CWingGoomba::OnCollisionWith(LPCOLLISIONEVENT e)
 {
 	if (!e->obj->IsBlocking()) return;
-	if (dynamic_cast<CWingGoomba*>(e->obj)) return;
+	//if (dynamic_cast<CWingGoomba*>(e->obj)) return;
 
 	if (e->ny != 0)
 	{
@@ -50,14 +51,21 @@ void CWingGoomba::OnCollisionWith(LPCOLLISIONEVENT e)
 
 void CWingGoomba::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 {
-	vy += ay * dt;
-	vx += ax * dt;
+	// hardcode winggoomba in flatform
+	if (y > 150 && GetTickCount64() - time_jump_start > 2000)
+	{
+			SetState(WINGGOOMBA_STATE_WALKING);
+	
+	}
 
 	if ((state == WINGGOOMBA_STATE_DIE) && (GetTickCount64() - die_start > WINGGOOMBA_DIE_TIMEOUT))
 	{
+
 		isDeleted = true;
 		return;
 	}
+	vy += ay * dt;
+	vx += ax * dt;
 
 	CGameObject::Update(dt, coObjects);
 	CCollision::GetInstance()->Process(this, dt, coObjects);
@@ -67,6 +75,7 @@ void CWingGoomba::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 void CWingGoomba::Render()
 {
 	int aniId = ID_ANI_WINGGOOMBA_WALKING;
+	if (!CheckInCam()) { return; }
 	if (state == WINGGOOMBA_STATE_DIE)
 	{
 		aniId = ID_ANI_WINGGOOMBA_DIE;
@@ -88,7 +97,8 @@ void CWingGoomba::SetState(int state)
 		vy = 0;
 		ay = 0;
 		break;
-	case ID_ANI_WINGGOOMBA_WALKING:
+	case WINGGOOMBA_STATE_WALKING:
+		time_jump_start = GetTickCount64();
 		vx = -WINGGOOMBA_WALKING_SPEED;
 		vy = -0.19f;
 		ay = 0.0005f;

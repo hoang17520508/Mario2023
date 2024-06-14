@@ -89,9 +89,7 @@ mushroom.txt
 2	450	160
 
 
-
 # 2 goomba satnhau gan cuoi map
-
 2	800	160
 2	850	160
 # 1 goomba wing cuoi map => handle wing later
@@ -101,6 +99,7 @@ mushroom.txt
 10	580	140
 1	510	145
 1	600	145
+1	1050	162	
 
 # MARIO
 0	20	10

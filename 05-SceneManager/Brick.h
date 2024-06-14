@@ -5,9 +5,9 @@
 #include "Animations.h"
 
 #define ID_ANI_BRICK 10000
-#define BRICK_WIDTH 16
-#define BRICK_BBOX_WIDTH 16
-#define BRICK_BBOX_HEIGHT 16
+#define BRICK_WIDTH 1
+#define BRICK_BBOX_WIDTH 1
+#define BRICK_BBOX_HEIGHT 1
 
 class CBrick : public CGameObject {
 public:
@@ -15,4 +15,5 @@ public:
 	void Render();
 	void Update(DWORD dt) {}
 	void GetBoundingBox(float& l, float& t, float& r, float& b);
+	void RenderBoundingBox(void);
 };
