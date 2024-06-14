@@ -348,8 +348,10 @@ void CMario::Render()
 	animations->Get(aniId)->Render(x, y);
 
 	//RenderBoundingBox();
+	float cam_x, cam_y;
+	CGame::GetInstance()->GetCamPos(cam_x, cam_y);
 	
-	DebugOutTitle(L"Coins: %d", coin);
+	DebugOutTitle(L"mario is in: %d : %d", int(cam_x),int(cam_y));
 }
 
 void CMario::SetState(int state)
