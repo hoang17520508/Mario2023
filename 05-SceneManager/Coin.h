@@ -12,15 +12,18 @@
 #define COIN_BBOX_HEIGHT 16
 #define COIN_STATE_NORMAL 1
 #define COIN_STATE_JUMP 2
+#define MAX_JUMP_DISTANCE 35
 
 
 class CCoin : public CGameObject {
 	float ax;
 	float ay;
+	float original_y;
 public:
 	CCoin(float x, float y) : CGameObject(x, y) {
 		ax = 0;
 		ay = 0.003f;
+		original_y = y;
 	}
 	void Render();
 	virtual void Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects);

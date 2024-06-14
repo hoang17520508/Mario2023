@@ -123,8 +123,9 @@ void CMario::OnCollisionWithCoin(LPCOLLISIONEVENT e)
 void CMario::OnCollisionWithMushroom(LPCOLLISIONEVENT e)
 {
 	DebugOut(L">>> Mario touch mushroom >>> \n");
-	e->obj->Delete();
 	level = MARIO_LEVEL_BIG;
+	vy=-0.2;
+	e->obj->Delete();
 }
 
 void CMario::OnCollisionWithPortal(LPCOLLISIONEVENT e)
@@ -260,7 +261,7 @@ void CMario::Render()
 {
 	CAnimations* animations = CAnimations::GetInstance();
 	// reset position when out screen
-	if (!CheckInCam()) { x = 0; y = 0; };
+	if (!CheckInCam() && state != MARIO_STATE_DIE) { x = 0; y = 0; };
 	int aniId = -1;
 
 	if (state == MARIO_STATE_DIE)

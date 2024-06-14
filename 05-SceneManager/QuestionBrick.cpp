@@ -34,7 +34,7 @@ void CQuestionBrick::SetState(int state)
 	case QUESTION_BRICK_STATE_COIN:
 	{
 		if (type_question_brick == QUESTION_BRICK_TYPE_MUSHROOM) {
-			CMushroom* mushroom = (CMushroom*)scene->AddObject(new CMushroom(x, y - QUESTION_BRICK_BBOX_HEIGHT / 2));
+			CMushroom* mushroom = (CMushroom*)scene->AddObject(new CMushroom(x+QUESTION_BRICK_BBOX_WIDTH, y - QUESTION_BRICK_BBOX_HEIGHT / 2));
 		}
 		else {
 			CCoin* coin = (CCoin*)scene->AddObject(new CCoin(x, y - QUESTION_BRICK_BBOX_HEIGHT / 2));

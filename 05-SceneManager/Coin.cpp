@@ -1,9 +1,11 @@
 #include "Coin.h"
+#include "debug.h"
 
 void CCoin::Render()
 {
 	int ani_id = ID_ANI_COIN;
 	CAnimations* animations = CAnimations::GetInstance();
+	if (state == COIN_STATE_JUMP && (original_y - y > MAX_JUMP_DISTANCE)) { DebugOut(L">>> COIN JUMP MAX >>> \n"); this->Delete(); }
 	if (state == COIN_STATE_JUMP)
 	{
 		ani_id = ID_ANI_COIN_JUMP;
@@ -25,8 +27,8 @@ void CCoin::SetState(int state)
 		break;
 	case COIN_STATE_JUMP:
 		vx = 0;
-		ay = 0.003f;
-		vy = -0.58f;
+		ay = 0.001f;
+		vy = -0.31f;
 		break;
 	}
 }

@@ -90,6 +90,8 @@ void CWingGoomba::SetState(int state)
 		break;
 	case ID_ANI_WINGGOOMBA_WALKING:
 		vx = -WINGGOOMBA_WALKING_SPEED;
+		vy = -0.19f;
+		ay = 0.0005f;
 		break;
 	}
 }
