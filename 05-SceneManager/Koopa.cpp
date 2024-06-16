@@ -1,8 +1,10 @@
 #include "Koopa.h"
+#include "debug.h" 
 
 CKoopa::CKoopa(float x, float y) :CGameObject(x, y)
 {
 	this->ax = 0;
+	InBrick = new CInvisibleBrick(x, y);
 	this->ay = KOOPA_GRAVITY;
 	die_start = -1;
 	SetState(KOOPA_STATE_WALKING);
@@ -57,6 +59,24 @@ void CKoopa::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 		isDeleted = true;
 		return;
 	}
+	DebugOut(L">>> Koopa  is in : %d : %d >>> \n",int(x),int(y));
+
+
+	if (vx > 0) 
+	{ 
+		InBrick->SetPosition(x + KOOPA_BBOX_WIDTH/2 + INVISIBLE_BRICK_BBOX_WIDTH/2, y); 
+	}
+	else 
+	{ 
+		InBrick->SetPosition(x - (KOOPA_BBOX_HEIGHT / 2 + INVISIBLE_BRICK_BBOX_WIDTH / 2), y); 
+	}
+	InBrick->Update(dt, coObjects);
+	float brick_x, brick_y;
+	InBrick->GetPosition(brick_x, brick_y);
+	if (brick_y - y > 0) 
+	{
+		vx = -vx; 
+	}
 
 	CGameObject::Update(dt, coObjects);
 	CCollision::GetInstance()->Process(this, dt, coObjects);
@@ -78,7 +98,8 @@ void CKoopa::Render()
 	}
 
 	CAnimations::GetInstance()->Get(aniId)->Render(x, y);
-	//RenderBoundingBox();
+	InBrick->Render();
+	RenderBoundingBox();
 }
 
 void CKoopa::SetState(int state)

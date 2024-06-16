@@ -1,5 +1,6 @@
 #pragma once
 #include "GameObject.h"
+#include "InvisibleBrick.h"
 
 #define KOOPA_GRAVITY 0.002f
 #define KOOPA_WALKING_SPEED 0.05f
@@ -38,5 +39,6 @@ protected:
 
 public:
 	CKoopa(float x, float y);
+	CInvisibleBrick* InBrick;
 	virtual void SetState(int state);
 };
