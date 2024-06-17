@@ -46,6 +46,7 @@ void CKoopa::OnCollisionWith(LPCOLLISIONEVENT e)
 	else if (e->nx != 0)
 	{
 		vx = -vx;
+		nx = e->nx;
 	}
 }
 
@@ -61,22 +62,25 @@ void CKoopa::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 	}
 	DebugOut(L">>> Koopa  is in : %d : %d >>> \n",int(x),int(y));
 
+	if (state == KOOPA_STATE_WALKING) {
+		if (vx > 0)
+		{
+			InBrick->SetPosition(x + KOOPA_BBOX_WIDTH / 2 + INVISIBLE_BRICK_BBOX_WIDTH / 2, y);
+		}
+		else
+		{
+			InBrick->SetPosition(x - (KOOPA_BBOX_HEIGHT / 2 + INVISIBLE_BRICK_BBOX_WIDTH / 2), y);
+		}
+		InBrick->Update(dt, coObjects);
+		float brick_x, brick_y;
+		InBrick->GetPosition(brick_x, brick_y);
+		if (brick_y - y > 0)
+		{
+			vx = -vx;
+		}
 
-	if (vx > 0) 
-	{ 
-		InBrick->SetPosition(x + KOOPA_BBOX_WIDTH/2 + INVISIBLE_BRICK_BBOX_WIDTH/2, y); 
 	}
-	else 
-	{ 
-		InBrick->SetPosition(x - (KOOPA_BBOX_HEIGHT / 2 + INVISIBLE_BRICK_BBOX_WIDTH / 2), y); 
-	}
-	InBrick->Update(dt, coObjects);
-	float brick_x, brick_y;
-	InBrick->GetPosition(brick_x, brick_y);
-	if (brick_y - y > 0) 
-	{
-		vx = -vx; 
-	}
+
 
 	CGameObject::Update(dt, coObjects);
 	CCollision::GetInstance()->Process(this, dt, coObjects);
@@ -95,6 +99,15 @@ void CKoopa::Render()
 	{
 		if (vx < 0)  aniId = ID_ANI_KOOPA_WALKING;
 		if (vx > 0)  aniId = ID_ANI_KOOPA_WALKING_RIGHT;
+	}
+
+	if (state == KOOPA_STATE_DEFEND)
+	{
+		aniId = ID_ANI_KOOPA_DEFEND;
+	}
+	if (state == KOOPA_STATE_BE_KICKING)
+	{
+		aniId = ID_ANI_KOOPA_DEFEND;
 	}
 
 	CAnimations::GetInstance()->Get(aniId)->Render(x, y);
@@ -117,5 +130,13 @@ void CKoopa::SetState(int state)
 	case KOOPA_STATE_WALKING:
 		vx = -KOOPA_WALKING_SPEED;
 		break;
+	case KOOPA_STATE_DEFEND:
+		vy = 0;
+		vx = 0;
+		break;
+	case KOOPA_STATE_BE_KICKING:
+		vx = nx*KOOPA_WALKING_SPEED * 3;
+		break;
 	}
+
 }
