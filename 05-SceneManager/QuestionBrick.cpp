@@ -31,16 +31,23 @@ void CQuestionBrick::SetState(int state)
 	LPPLAYSCENE scene = (LPPLAYSCENE)CGame::GetInstance()->GetCurrentScene();
 	switch (state)
 {
-	case QUESTION_BRICK_STATE_COIN:
+	case QUESTION_BRICK_STATE_UNBOX:
 	{
+		CMario* mario = (CMario*)((LPPLAYSCENE)CGame::GetInstance()->GetCurrentScene())->GetPlayer();
 		if (type_question_brick == QUESTION_BRICK_TYPE_MUSHROOM) {
-			CMushroom* mushroom = (CMushroom*)scene->AddObject(new CMushroom(x+QUESTION_BRICK_BBOX_WIDTH, y - QUESTION_BRICK_BBOX_HEIGHT / 2));
+			if (mario->GetLevel() < MARIO_LEVEL_BIG) CMushroom* mushroom = (CMushroom*)scene->AddObject(new CMushroom(x+QUESTION_BRICK_BBOX_WIDTH, y - QUESTION_BRICK_BBOX_HEIGHT / 2));
+			else { CCoin* coin = (CCoin*)scene->AddObject(new CCoin(x, y - QUESTION_BRICK_BBOX_HEIGHT / 2));
+			coin->SetPosition(x, y);
+			coin->SetState(2);
+			}
 		}
 		else {
 			CCoin* coin = (CCoin*)scene->AddObject(new CCoin(x, y - QUESTION_BRICK_BBOX_HEIGHT / 2));
 			coin->SetPosition(x, y);
 			coin->SetState(2);
 		}
+
+		// TODO: case leaf handle later
 		
 		SetState(QUESTION_BRICK_STATE_DISABLE);
 		is_open = TRUE;

@@ -9,7 +9,7 @@
 #define QUESTION_BRICK_WIDTH 16
 #define QUESTION_BRICK_STATE_IDLE 1
 #define QUESTION_BRICK_STATE_DISABLE 2
-#define QUESTION_BRICK_STATE_COIN 3
+#define QUESTION_BRICK_STATE_UNBOX 3
 #define QUESTION_BRICK_BBOX_WIDTH 16
 #define QUESTION_BRICK_BBOX_HEIGHT 16
 #define QUESTION_BRICK_TYPE_COIN 1
@@ -30,6 +30,6 @@ public:
 	BOOLEAN CheckOpen() { return is_open; }
 	void SetState(int state);
 	void OnNoCollision(DWORD dt);
-	void OpenQuestionBrick() { SetState(QUESTION_BRICK_STATE_COIN); };
+	void OpenQuestionBrick() { SetState(QUESTION_BRICK_STATE_UNBOX); };
 
 };
