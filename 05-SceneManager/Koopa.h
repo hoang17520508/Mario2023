@@ -29,6 +29,8 @@
 #define ID_ANI_KOOPA_BE_HOLDING 601005
 #define ID_ANI_KOOPA_BE_REFRESH 601006
 #define ID_ANI_KOOPA_DIE 5001
+
+#define KOOPA_REFRESH_TIME 10000
 class CKoopa : public CGameObject
 {
 protected:
@@ -36,6 +38,7 @@ protected:
 	float ay;
 
 	ULONGLONG die_start;
+	ULONGLONG refresh_time;
 
 	virtual void GetBoundingBox(float& left, float& top, float& right, float& bottom);
 	virtual void Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects);

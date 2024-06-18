@@ -78,7 +78,14 @@ void CKoopa::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 		isDeleted = true;
 		return;
 	}
+
 //	DebugOut(L">>> Koopa  is in : %d : %d >>> \n",int(x),int(y));
+	DebugOut(L">>> Koopa touch current state : %d \n",int(state));
+	if (state == KOOPA_STATE_DEFEND || state == KOOPA_STATE_BE_KICKING)
+	{
+		if ((GetTickCount64() - refresh_time >= KOOPA_REFRESH_TIME) && !CheckInCam())
+			SetState(KOOPA_STATE_WALKING);
+	}
 
 	if (state == KOOPA_STATE_WALKING) {
 		if (vx > 0)
@@ -149,10 +156,12 @@ void CKoopa::SetState(int state)
 		vx = -KOOPA_WALKING_SPEED;
 		break;
 	case KOOPA_STATE_DEFEND:
+		refresh_time = GetTickCount64();
 		vy = 0;
 		vx = 0;
 		break;
 	case KOOPA_STATE_BE_KICKING:
+		refresh_time = GetTickCount64();
 		vx = nx*KOOPA_WALKING_SPEED * 3;
 		break;
 	}
