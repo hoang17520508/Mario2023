@@ -45,6 +45,10 @@ protected:
 	virtual int IsBlocking() { return 0; }
 	virtual void OnNoCollision(DWORD dt);
 
+	void OnCollisionWithGoomba(LPCOLLISIONEVENT e);
+	void OnCollisionWithQuestionBrick(LPCOLLISIONEVENT e);
+	//void OnCollisionWithWingGoomba(LPCOLLISIONEVENT e);
+
 	virtual void OnCollisionWith(LPCOLLISIONEVENT e);
 
 public:

@@ -1,5 +1,7 @@
 #include "Koopa.h"
 #include "debug.h" 
+#include "Goomba.h"
+#include "QuestionBrick.h"
 
 CKoopa::CKoopa(float x, float y) :CGameObject(x, y)
 {
@@ -34,11 +36,23 @@ void CKoopa::OnNoCollision(DWORD dt)
 	y += vy * dt;
 };
 
+void CKoopa::OnCollisionWithGoomba(LPCOLLISIONEVENT e) {
+	DebugOut(L">>> Koopa touch goomba \n");
+	CGoomba* goomba = dynamic_cast<CGoomba*>(e->obj);
+	if (goomba->GetState() != GOOMBA_STATE_DIE)
+	{
+		goomba->SetState(GOOMBA_STATE_DIE);
+	}
+}
+
+void CKoopa::OnCollisionWithQuestionBrick(LPCOLLISIONEVENT e) {
+	DebugOut(L">>> Koopa touch Qbrick \n");
+	CQuestionBrick* brick = dynamic_cast<CQuestionBrick*>(e->obj);
+	brick->SetState(QUESTION_BRICK_STATE_UNBOX);
+}
+
 void CKoopa::OnCollisionWith(LPCOLLISIONEVENT e)
 {
-	if (!e->obj->IsBlocking()) return;
-	if (dynamic_cast<CKoopa*>(e->obj)) return;
-
 	if (e->ny != 0)
 	{
 		vy = 0;
@@ -48,6 +62,10 @@ void CKoopa::OnCollisionWith(LPCOLLISIONEVENT e)
 		vx = -vx;
 		nx = e->nx;
 	}
+	if (dynamic_cast<CGoomba*>(e->obj))
+		OnCollisionWithGoomba(e);
+	else if (dynamic_cast<CQuestionBrick*>(e->obj))
+		OnCollisionWithQuestionBrick(e);
 }
 
 void CKoopa::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
@@ -60,7 +78,7 @@ void CKoopa::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 		isDeleted = true;
 		return;
 	}
-	DebugOut(L">>> Koopa  is in : %d : %d >>> \n",int(x),int(y));
+//	DebugOut(L">>> Koopa  is in : %d : %d >>> \n",int(x),int(y));
 
 	if (state == KOOPA_STATE_WALKING) {
 		if (vx > 0)
