@@ -112,7 +112,9 @@ class CMario : public CGameObject
 	int untouchable; 
 	ULONGLONG untouchable_start;
 	BOOLEAN isOnPlatform;
-	int coin; 
+	int coin;
+
+
 
 	void OnCollisionWithGoomba(LPCOLLISIONEVENT e);
 	void OnCollisionWithCoin(LPCOLLISIONEVENT e);
@@ -139,6 +141,9 @@ public:
 		isOnPlatform = false;
 		coin = 0;
 	}
+	void SetCanHoldKoopa() { can_hold_koopa = true; }
+	void ThrowKoopa() { can_hold_koopa = false; }
+	BOOLEAN checkCanHoldKoopa() { return can_hold_koopa; }
 	void Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects);
 	void Render();
 	void SetState(int state);

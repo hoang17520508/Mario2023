@@ -36,6 +36,7 @@ class CKoopa : public CGameObject
 protected:
 	float ax;
 	float ay;
+	float original_x, original_y;
 
 	ULONGLONG die_start;
 	ULONGLONG refresh_time;

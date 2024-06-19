@@ -2,10 +2,13 @@
 #include "debug.h" 
 #include "Goomba.h"
 #include "QuestionBrick.h"
+#include "PlayScene.h"
 
 CKoopa::CKoopa(float x, float y) :CGameObject(x, y)
 {
 	this->ax = 0;
+	this->original_x = x;
+	this->original_y = y;
 	InBrick = new CInvisibleBrick(x, y);
 	this->ay = KOOPA_GRAVITY;
 	die_start = -1;
@@ -37,7 +40,6 @@ void CKoopa::OnNoCollision(DWORD dt)
 };
 
 void CKoopa::OnCollisionWithGoomba(LPCOLLISIONEVENT e) {
-	DebugOut(L">>> Koopa touch goomba \n");
 	CGoomba* goomba = dynamic_cast<CGoomba*>(e->obj);
 	if (goomba->GetState() != GOOMBA_STATE_DIE)
 	{
@@ -46,7 +48,6 @@ void CKoopa::OnCollisionWithGoomba(LPCOLLISIONEVENT e) {
 }
 
 void CKoopa::OnCollisionWithQuestionBrick(LPCOLLISIONEVENT e) {
-	DebugOut(L">>> Koopa touch Qbrick \n");
 	CQuestionBrick* brick = dynamic_cast<CQuestionBrick*>(e->obj);
 	brick->SetState(QUESTION_BRICK_STATE_UNBOX);
 }
@@ -79,12 +80,14 @@ void CKoopa::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 		return;
 	}
 
-//	DebugOut(L">>> Koopa  is in : %d : %d >>> \n",int(x),int(y));
-	DebugOut(L">>> Koopa touch current state : %d \n",int(state));
+	//DebugOut(L">>> Koopa touch current state : %d \n",int(state));
 	if (state == KOOPA_STATE_DEFEND || state == KOOPA_STATE_BE_KICKING)
 	{
 		if ((GetTickCount64() - refresh_time >= KOOPA_REFRESH_TIME) && !CheckInCam())
+		{
 			SetState(KOOPA_STATE_WALKING);
+			SetPosition(original_x, original_y);
+		}
 	}
 
 	if (state == KOOPA_STATE_WALKING) {
@@ -114,6 +117,8 @@ void CKoopa::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 
 void CKoopa::Render()
 {
+	// CMario* mario = (CMario*)((LPPLAYSCENE)CGame::GetInstance()->GetCurrentScene())->GetPlayer();
+	// TODO handle hold koopa
 	int aniId = ID_ANI_KOOPA_WALKING;
 	if (!CheckInCam()) return;
 	if (state == KOOPA_STATE_DIE)
@@ -132,7 +137,7 @@ void CKoopa::Render()
 	}
 	if (state == KOOPA_STATE_BE_KICKING)
 	{
-		aniId = ID_ANI_KOOPA_DEFEND;
+		aniId = ID_ANI_KOOPA_BE_KICKING;
 	}
 
 	CAnimations::GetInstance()->Get(aniId)->Render(x, y);

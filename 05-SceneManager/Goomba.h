@@ -21,7 +21,7 @@ class CGoomba : public CGameObject
 {
 protected:
 	float ax;				
-	float ay; 
+	float ay;
 
 	ULONGLONG die_start;
 
