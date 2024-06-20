@@ -112,6 +112,7 @@ class CMario : public CGameObject
 	int untouchable; 
 	ULONGLONG untouchable_start;
 	BOOLEAN isOnPlatform;
+	BOOLEAN can_hold_koopa;
 	int coin;
 
 

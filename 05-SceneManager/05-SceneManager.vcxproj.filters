@@ -105,6 +105,9 @@
     <ClCompile Include="InvisibleBrick.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Plant.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -200,6 +203,9 @@
     <ClInclude Include="InvisibleBrick.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Plant.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="brick.txt">
@@ -238,6 +244,9 @@
     </Text>
     <Text Include="background.txt" />
     <Text Include="Mushroom.txt">
+      <Filter>Source Files</Filter>
+    </Text>
+    <Text Include="Plant.txt">
       <Filter>Source Files</Filter>
     </Text>
   </ItemGroup>
