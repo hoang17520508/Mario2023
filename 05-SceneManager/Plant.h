@@ -4,10 +4,11 @@
 #include "Animation.h"
 #include "Animations.h"
 
-#define ID_ANI_PLANT 602002
+#define ID_ANI_PLANT_LEFT 602002
+#define ID_ANI_PLANT_RIGHT 602005
 #define PLANT_BBOX_WIDTH 26
 #define PLANT_BBOX_HEIGHT 34
-#define PLANT_SPEED 0.02f
+#define PLANT_SPEED 0.03f
 #define PLANT_STATE_UP 100
 #define PLANT_STATE_DOWN 200
 #define PLANT_TIME_OUT_UP_STATE 3400 

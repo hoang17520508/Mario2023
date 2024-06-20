@@ -1,6 +1,7 @@
 #include "Plant.h"
 #include "Game.h"
 #include "Textures.h"
+#include "PlayScene.h"
 
 
 CPlant::CPlant(float x, float y) :CGameObject(x, y)
@@ -40,7 +41,15 @@ void CPlant::RenderBoundingBox()
 void CPlant::Render()
 {
 	CAnimations* animations = CAnimations::GetInstance();
-	animations->Get(ID_ANI_PLANT)->Render(x, y);
+	if (!CheckInCam()) return;
+	int ani_id = ID_ANI_PLANT_LEFT;
+	float mario_x, mario_y;
+	CMario* mario = (CMario*)((LPPLAYSCENE)CGame::GetInstance()->GetCurrentScene())->GetPlayer();
+	mario->GetPosition(mario_x, mario_y);
+	if (mario_x >= x) {
+		ani_id = ID_ANI_PLANT_RIGHT;
+	}
+	animations->Get(ani_id)->Render(x, y);
 	RenderBoundingBox();
 }
 
@@ -50,7 +59,6 @@ void CPlant::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 	vx += ax * dt;
 
 	if (is_upping) {
-		// make sure that the plant will moving after create
 		if (y > min_y) {
 			vy = -PLANT_SPEED;
 		}
