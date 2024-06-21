@@ -3,6 +3,8 @@
 #include "GameObject.h"
 #include "Animation.h"
 #include "Animations.h"
+#include "Bullet.h"
+#include "debug.h"
 
 #define ID_ANI_PLANT_LEFT 602002
 #define ID_ANI_PLANT_RIGHT 602005
@@ -12,12 +14,14 @@
 #define PLANT_STATE_UP 100
 #define PLANT_STATE_DOWN 200
 #define PLANT_TIME_OUT_UP_STATE 3400 
-#define PLANT_TIME_OUT_DOWN_STATE 5000
+#define PLANT_TIME_OUT_DOWN_STATE 2000
+
 
 class CPlant : public CGameObject {
 protected:
 	float ax, ay;
 	float vx, vy;
+	float original_x, original_y;
 
 	float min_y;
 	float max_y;

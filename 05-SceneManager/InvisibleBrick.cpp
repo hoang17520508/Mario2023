@@ -33,7 +33,7 @@ void CInvisibleBrick::Render()
 {
 	/*CAnimations* animations = CAnimations::GetInstance();
 	animations->Get(ID_ANI_INVISIBLE_BRICK)->Render(x, y);*/
-	RenderBoundingBox();
+	//RenderBoundingBox();
 }
 
 void CInvisibleBrick::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)

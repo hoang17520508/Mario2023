@@ -14,6 +14,8 @@ CPlant::CPlant(float x, float y) :CGameObject(x, y)
 	time_down_start = 0;
 	time_up_start = 0;
 	min_y = y - PLANT_BBOX_HEIGHT;
+	original_x = x;
+	original_y = y;
 
 }
 
@@ -50,13 +52,17 @@ void CPlant::Render()
 		ani_id = ID_ANI_PLANT_RIGHT;
 	}
 	animations->Get(ani_id)->Render(x, y);
-	RenderBoundingBox();
+	//RenderBoundingBox();
 }
 
 void CPlant::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 {
 	vy += ay * dt;
 	vx += ax * dt;
+	CPlayScene* scene = (CPlayScene*)CGame::GetInstance()->GetCurrentScene();
+	float mario_x, mario_y;
+	CMario* mario = (CMario*)((LPPLAYSCENE)CGame::GetInstance()->GetCurrentScene())->GetPlayer();
+	mario->GetPosition(mario_x, mario_y);
 
 	if (is_upping) {
 		if (y > min_y) {
@@ -67,6 +73,10 @@ void CPlant::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 			y = min_y;
 			if (GetTickCount64() - time_up_start > PLANT_TIME_OUT_UP_STATE) {
 				SetState(PLANT_STATE_DOWN);
+				CBullet* bullet = (CBullet*)scene->AddObject(new CBullet(original_x, original_y - PLANT_BBOX_HEIGHT));
+				bullet->SetPosition(original_x , original_y - PLANT_BBOX_HEIGHT);
+				bullet->Shoot(mario_x, mario_y, y);
+				DebugOut(L" time to shoot");
 			}
 		}
 	}

@@ -19,6 +19,7 @@
 #include "Mushroom.h"
 #include "InvisibleBrick.h"
 #include "Plant.h"
+#include "Bullet.h"
 
 #include "SampleKeyEventHandler.h"
 
@@ -145,6 +146,7 @@ void CPlayScene::_ParseSection_OBJECTS(string line)
 	}
 	case OBJECT_TYPE_PIPE: obj = new CPipe(x, y); break;
 	case OBJECT_TYPE_PLANT: obj = new CPlant(x, y); break;
+	//case OBJECT_TYPE_BULLET: obj = new CBullet(x, y); break;
 	case OBJECT_TYPE_COIN: obj = new CCoin(x, y); break;
 	case OBJECT_TYPE_INVISIBLE_BRICK: obj = new CInvisibleBrick(x, y); break;
 
