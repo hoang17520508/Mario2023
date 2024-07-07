@@ -48,7 +48,7 @@ float CGameObject::GetWidth()
 BOOLEAN CGameObject::CheckInCam() {
 	float cam_x, cam_y;
 	CGame::GetInstance()->GetCamPos(cam_x, cam_y);
-	float l, t, r, b;;
+	float l, t, r, b;
 	GetBoundingBox(l, t, r, b);
 	if (r < cam_x || l > cam_x + 320)
 		return false;

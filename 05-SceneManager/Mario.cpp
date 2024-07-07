@@ -14,11 +14,16 @@
 #include "Koopa.h"
 #include "Plant.h"
 #include "Bullet.h"
+#include "Leaf.h"
 
 #include "Collision.h"
 
 void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 {
+	float cam_x, cam_y;
+	CGame::GetInstance()->GetCamPos(cam_x, cam_y);
+	float l, t, r, b;;
+	//DebugOut(L"check cam mario %d  :  %d",int(cam_x),int(cam_y));
 	vy += ay * dt;
 	vx += ax * dt;
 
@@ -73,6 +78,8 @@ void CMario::OnCollisionWith(LPCOLLISIONEVENT e)
 		OnCollisionWithBullet(e);
 	else if (dynamic_cast<CPlant*>(e->obj))
 		OnCollisionWithPlant(e);
+	else if (dynamic_cast<CLeaf*>(e->obj))
+		OnCollisionWithLeaf(e);
 	
 }
 
@@ -256,6 +263,14 @@ void CMario::OnCollisionWithMushroom(LPCOLLISIONEVENT e)
 	e->obj->Delete();
 }
 
+void CMario::OnCollisionWithLeaf(LPCOLLISIONEVENT e)
+{
+	DebugOut(L">>> Mario touch  leaf >>> \n");
+	level = MARIO_LEVEL_TAIL;
+	vy = -0.2;
+	e->obj->Delete();
+}
+
 void CMario::OnCollisionWithPortal(LPCOLLISIONEVENT e)
 {
 	CPortal* p = (CPortal*)e->obj;
@@ -385,6 +400,65 @@ int CMario::GetAniIdBig()
 	return aniId;
 }
 
+int CMario::GetAniIdTail()
+{
+	int aniId = -1;
+	if (!isOnPlatform)
+	{
+		if (abs(ax) == MARIO_ACCEL_RUN_X)
+		{
+			//jump
+			if (nx >= 0)
+				aniId = ID_ANI_TAIL_MARIO_FLY_RIGHT;
+			else
+				aniId = ID_ANI_TAIL_MARIO_FLY_LEFT;
+		}
+		else
+		{
+			if (nx >= 0)
+				aniId = ID_ANI_TAIL_MARIO_WALKING_RIGHT;
+			else
+				aniId = ID_ANI_TAIL_MARIO_WALKING_LEFT;
+		}
+	}
+	else
+		if (isSitting)
+		{
+			if (nx > 0)
+				aniId = ID_ANI_TAIL_MARIO_SIT_RIGHT;
+			else
+				aniId = ID_ANI_TAIL_MARIO_SIT_LEFT;
+		}
+		else
+			if (vx == 0)
+			{
+				if (nx > 0) aniId = ID_ANI_TAIL_MARIO_IDLE_RIGHT;
+				else aniId = ID_ANI_TAIL_MARIO_IDLE_LEFT;
+			}
+			else if (vx > 0)
+			{
+				if (ax < 0)
+					aniId = ID_ANI_TAIL_MARIO_BRACE_RIGHT;
+				else if (ax == MARIO_ACCEL_RUN_X)
+					aniId = ID_ANI_TAIL_MARIO_RUNNING_RIGHT;
+				else if (ax == MARIO_ACCEL_WALK_X)
+					aniId = ID_ANI_TAIL_MARIO_RUNNING_RIGHT;
+			}
+			else // vx < 0
+			{
+				if (ax > 0)
+					aniId = ID_ANI_TAIL_MARIO_BRACE_LEFT;
+				else if (ax == -MARIO_ACCEL_RUN_X)
+					aniId = ID_ANI_TAIL_MARIO_RUNNING_LEFT;
+				else if (ax == -MARIO_ACCEL_WALK_X)
+					aniId = ID_ANI_TAIL_MARIO_RUNNING_LEFT;
+			}
+
+	if (aniId == -1) aniId = ID_ANI_TAIL_MARIO_IDLE_RIGHT;
+
+	return aniId;
+}
+
 void CMario::Render()
 {
 	CAnimations* animations = CAnimations::GetInstance();
@@ -398,6 +472,8 @@ void CMario::Render()
 		aniId = GetAniIdBig();
 	else if (level == MARIO_LEVEL_SMALL)
 		aniId = GetAniIdSmall();
+	else if (level == MARIO_LEVEL_TAIL)
+		aniId = GetAniIdTail();
 
 	animations->Get(aniId)->Render(x, y);
 
@@ -490,7 +566,7 @@ void CMario::SetState(int state)
 
 void CMario::GetBoundingBox(float &left, float &top, float &right, float &bottom)
 {
-	if (level==MARIO_LEVEL_BIG)
+	if (level==MARIO_LEVEL_BIG || level == MARIO_LEVEL_TAIL)
 	{
 		if (isSitting)
 		{

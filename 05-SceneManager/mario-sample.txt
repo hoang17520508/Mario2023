@@ -22,3 +22,4 @@ height	240
 60	textures\background.png
 70	textures\misc3.png
 80	textures\misc2-removebg.png
+81	textures\misc_right_rmbg.png

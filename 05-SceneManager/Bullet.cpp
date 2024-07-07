@@ -20,15 +20,15 @@ void CBullet::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 
 void CBullet::Render()
 {
-	if (!CheckInCam()) return;
+	if (!CheckInCam() || vx == 0) return;
 	CAnimations::GetInstance()->Get(ID_ANI_BULLET)->Render(x, y);
 }
 
-void CBullet::OnNoCollision(DWORD dt)
-{
-	x += vx * dt;
-	y += vy * dt;
-}
+//void CBullet::OnNoCollision(DWORD dt)
+//{
+//	x += vx * dt;
+//	y += vy * dt;
+//}
 
 void CBullet::OnCollisionWith(LPCOLLISIONEVENT e, DWORD dt)
 {
@@ -42,30 +42,42 @@ void CBullet::SetState(int state)
 void CBullet::Shoot(float enemyX, float enemyY, float plant_y)
 {	
 	// check in zone to attack
-	if (abs(x - enemyX) <= MAX_ATTACK_ZONE && abs(plant_y - enemyY) <= MAX_ATTACK_ZONE)
+//	DebugOut(L"check v bullet enemyX :%d enemyY: %d plannY : %d", int(enemyX), int(enemyY), int(plant_y));
+	if (abs(x - enemyX) <= MAX_ATTACK_ZONE)
 	{
-		if (abs(x - enemyX) <= MIN_ATTACK_ZONE)
-		{
-			if (enemyY < plant_y)
+		if (checkShootFar(x, enemyX)) {
+			DebugOut(L"far==");
+			if (y > enemyY) {
 				vy = -VY_BULLET_MARIO_FAR;
+			}
 			else
-				vx = VY_BULLET_MARIO_FAR;
+			{
+				vy = VY_BULLET_MARIO_FAR;
+			}
 		}
 		else
 		{
-			if (enemyY < plant_y)
+			if (y > enemyY) {
 				vy = -VY_BULLET_MARIO_CLOSE;
+			}
 			else
+			{
 				vy = VY_BULLET_MARIO_CLOSE;
+			}
 		}
-		if (enemyX > x)
-		{
-			vx = VX_BULLET;
-		}
-		else
+		if (x - enemyX >= 0)  //ban qua ben trai
 		{
 			vx = -VX_BULLET;
 		}
+		else {
+			vx = VX_BULLET;
+		}
 	}
+	else {
+		vx = 0;
+		vy = 0;
+	}
+	//DebugOut(L"check v bullet %d  :  %d", float(vx), float(vy));
+	SetSpeed(vx, vy);
 }
 

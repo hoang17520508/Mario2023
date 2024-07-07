@@ -76,7 +76,6 @@ void CPlant::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 				CBullet* bullet = (CBullet*)scene->AddObject(new CBullet(original_x, original_y - PLANT_BBOX_HEIGHT));
 				bullet->SetPosition(original_x , original_y - PLANT_BBOX_HEIGHT);
 				bullet->Shoot(mario_x, mario_y, y);
-				DebugOut(L" time to shoot");
 			}
 		}
 	}

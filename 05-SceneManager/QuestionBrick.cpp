@@ -1,5 +1,6 @@
 #include "QuestionBrick.h"
 #include "Coin.h"
+#include "Leaf.h"
 #include "Mushroom.h"
 #include "PlayScene.h"
 
@@ -35,10 +36,26 @@ void CQuestionBrick::SetState(int state)
 	{
 		CMario* mario = (CMario*)((LPPLAYSCENE)CGame::GetInstance()->GetCurrentScene())->GetPlayer();
 		if (type_question_brick == QUESTION_BRICK_TYPE_MUSHROOM) {
-			if (mario->GetLevel() < MARIO_LEVEL_BIG) CMushroom* mushroom = (CMushroom*)scene->AddObject(new CMushroom(x+QUESTION_BRICK_BBOX_WIDTH, y - QUESTION_BRICK_BBOX_HEIGHT / 2));
-			else { CCoin* coin = (CCoin*)scene->AddObject(new CCoin(x, y - QUESTION_BRICK_BBOX_HEIGHT / 2));
-			coin->SetPosition(x, y);
-			coin->SetState(2);
+			switch (mario->GetLevel())
+			{
+			case MARIO_LEVEL_BIG:
+			{
+				// sinh leaf
+				CLeaf* mushroom = (CLeaf*)scene->AddObject(new CLeaf(x + QUESTION_BRICK_BBOX_WIDTH, y - QUESTION_BRICK_BBOX_HEIGHT*2));
+				break;
+			}
+			case MARIO_LEVEL_TAIL:
+			{
+				CCoin* coin = (CCoin*)scene->AddObject(new CCoin(x, y - QUESTION_BRICK_BBOX_HEIGHT / 2));
+				coin->SetPosition(x, y);
+				coin->SetState(2);
+				break;
+			}
+			case MARIO_LEVEL_SMALL:
+			{
+				CMushroom* mushroom = (CMushroom*)scene->AddObject(new CMushroom(x + QUESTION_BRICK_BBOX_WIDTH, y - QUESTION_BRICK_BBOX_HEIGHT / 2));
+				break;
+			}
 			}
 		}
 		else {

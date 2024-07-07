@@ -20,6 +20,7 @@
 #include "InvisibleBrick.h"
 #include "Plant.h"
 #include "Bullet.h"
+#include "Leaf.h"
 
 #include "SampleKeyEventHandler.h"
 
@@ -133,6 +134,7 @@ void CPlayScene::_ParseSection_OBJECTS(string line)
 	case OBJECT_TYPE_WING_GOOMBA: obj = new CWingGoomba(x, y); break;
 	case OBJECT_TYPE_KOOPA: obj = new CKoopa(x, y); break;
 	case OBJECT_TYPE_BRICK: obj = new CBrick(x, y); break;
+	case OBJECT_TYPE_LEAF: obj = new CLeaf(x, y); break;
 	case OBJECT_TYPE_QUESTION_BRICK: {
 		if (tokens.size() > 3) {
 			int type = atoi(tokens[3].c_str());

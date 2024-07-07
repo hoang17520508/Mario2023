@@ -111,6 +111,12 @@
     <ClCompile Include="Bullet.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Leaf.h">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Leaf.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -256,6 +262,9 @@
       <Filter>Source Files</Filter>
     </Text>
     <Text Include="bullet.txt">
+      <Filter>Source Files</Filter>
+    </Text>
+    <Text Include="leaf.txt">
       <Filter>Source Files</Filter>
     </Text>
   </ItemGroup>

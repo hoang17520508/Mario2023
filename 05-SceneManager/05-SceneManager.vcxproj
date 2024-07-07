@@ -158,6 +158,8 @@
     <ClCompile Include="Goomba.cpp" />
     <ClCompile Include="InvisibleBrick.cpp" />
     <ClCompile Include="Koopa.cpp" />
+    <ClCompile Include="Leaf.cpp" />
+    <ClCompile Include="Leaf.h" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Mario.cpp" />
     <ClCompile Include="Mushroom.cpp" />
@@ -220,6 +222,7 @@
     <Text Include="coin.txt" />
     <Text Include="goomba.txt" />
     <Text Include="koopa.txt" />
+    <Text Include="leaf.txt" />
     <Text Include="mario-sample.txt" />
     <Text Include="mario.txt" />
     <Text Include="Mushroom.txt" />
