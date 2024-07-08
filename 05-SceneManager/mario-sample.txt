@@ -23,3 +23,4 @@ height	240
 70	textures\misc3.png
 80	textures\misc2-removebg.png
 81	textures\misc_right_rmbg.png
+120	textures\hud_source_dark.png

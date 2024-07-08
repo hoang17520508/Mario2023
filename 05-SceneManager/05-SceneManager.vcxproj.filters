@@ -117,6 +117,9 @@
     <ClCompile Include="Leaf.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Hub.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -218,6 +221,9 @@
     <ClInclude Include="Bullet.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Hub.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="brick.txt">
@@ -265,6 +271,9 @@
       <Filter>Source Files</Filter>
     </Text>
     <Text Include="leaf.txt">
+      <Filter>Source Files</Filter>
+    </Text>
+    <Text Include="hub.txt">
       <Filter>Source Files</Filter>
     </Text>
   </ItemGroup>

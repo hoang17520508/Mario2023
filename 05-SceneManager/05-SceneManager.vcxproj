@@ -156,6 +156,7 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Goomba.cpp" />
+    <ClCompile Include="Hub.cpp" />
     <ClCompile Include="InvisibleBrick.cpp" />
     <ClCompile Include="Koopa.cpp" />
     <ClCompile Include="Leaf.cpp" />
@@ -193,6 +194,7 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Goomba.h" />
+    <ClInclude Include="Hub.h" />
     <ClInclude Include="InvisibleBrick.h" />
     <ClInclude Include="Mushroom.h" />
     <ClInclude Include="KeyEventHandler.h" />
@@ -221,6 +223,7 @@
     <Text Include="cloud.txt" />
     <Text Include="coin.txt" />
     <Text Include="goomba.txt" />
+    <Text Include="hub.txt" />
     <Text Include="koopa.txt" />
     <Text Include="leaf.txt" />
     <Text Include="mario-sample.txt" />
