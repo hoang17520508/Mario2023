@@ -3,9 +3,9 @@
 #include "Animations.h"
 
 #define ID_ANI_HUB 103001
-#define HUB_WIDTH 16
-#define HUB_BBOX_WIDTH 16
-#define HUB_BBOX_HEIGHT 16
+#define HUB_WIDTH 251
+#define HUB_BBOX_WIDTH 251
+#define HUB_BBOX_HEIGHT 30
 
 class CHub : public CGameObject {
 public:

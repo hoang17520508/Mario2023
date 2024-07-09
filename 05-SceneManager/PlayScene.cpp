@@ -21,7 +21,7 @@
 #include "Plant.h"
 #include "Bullet.h"
 #include "Leaf.h"
-#include "Hub.h"
+//#include "Hub.h"
 
 #include "SampleKeyEventHandler.h"
 
@@ -334,7 +334,21 @@ void CPlayScene::Update(DWORD dt)
 	if (cx < 0) cx = 0;
 
 	CGame::GetInstance()->SetCamPos(cx, 0 /*620.0f*/ /*cy*/);
+	float cam_x, cam_y;
+	game->GetCamPos(cam_x, cam_y);
+	float currentHubX, currentHubY;
+	currentHubX = cam_x + game->GetBackBufferWidth() / 2;
+	currentHubY = cam_y + game->GetBackBufferHeight() - HUB_BBOX_HEIGHT / 2;
+	if (hub){
+		game->GetCamPos(cam_x, cam_y);
+		hub->SetPosition(currentHubX, currentHubY);
+	}
+	else {
+		DebugOut(L"tao ra hud");
+		hub = new CHub(currentHubX, currentHubY);
+	}
 
+	hub->Update(dt);
 	PurgeDeletedObjects();
 }
 
@@ -342,6 +356,8 @@ void CPlayScene::Render()
 {
 	for (int i = 0; i < objects.size(); i++)
 		objects[i]->Render();
+	if (hub)
+		hub->Render();
 }
 
 /*
