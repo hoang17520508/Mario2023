@@ -3,8 +3,6 @@
 
 using namespace std;
 
-#pragma once
-
 #define ID_SPRITE_HUD_BACKGROUND 103100
 
 #define ID_ANI_HUD_BACKGROUND 103001

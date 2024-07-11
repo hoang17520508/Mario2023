@@ -17,6 +17,7 @@ public:
 	void RenderPower();
 	void RenderCoin();
 	void RenderCard();
+	void RenderWordName();
 	void Update(DWORD dt) {}
 	void GetBoundingBox(float& l, float& t, float& r, float& b);
 };
