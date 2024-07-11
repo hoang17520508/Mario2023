@@ -43,6 +43,11 @@ public:
 		GetBoundingBox(left, top, right, bottom);
 		return left;
 	}
+	float GetTop() {
+		float left, top, right, bottom;
+		GetBoundingBox(left, top, right, bottom);
+		return top;
+	}
 	float GetRight() {
 		float left, top, right, bottom;
 		GetBoundingBox(left, top, right, bottom);

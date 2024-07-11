@@ -140,6 +140,10 @@ class CMario : public CGameObject
 	BOOLEAN isOnPlatform;
 	BOOLEAN can_hold_koopa;
 	int coin;
+	//set up data
+	int point;
+	int power;
+	int life;
 
 
 
@@ -171,6 +175,8 @@ public:
 		untouchable_start = -1;
 		isOnPlatform = false;
 		coin = 0;
+		point = 0;
+		life = 3;
 	}
 	void SetCanHoldKoopa() { can_hold_koopa = true; }
 	void ThrowKoopa() { can_hold_koopa = false; }

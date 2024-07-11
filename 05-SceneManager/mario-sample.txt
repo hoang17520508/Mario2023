@@ -24,3 +24,13 @@ height	240
 80	textures\misc2-removebg.png
 81	textures\misc_right_rmbg.png
 120	textures\hud_source_dark.png
+100	textures\HUD.png
+110	textures\hud_source.png
+120	textures\hud_source_dark.png
+130	textures\hud_source_blue.png
+140	textures\mario_world_map.png
+150	textures\world_map_source.png
+160	textures\hidden_map_source.png
+170	textures\full_hidden_map.png
+180	textures\dialogs_rmbg.png
+190	textures\card.png
