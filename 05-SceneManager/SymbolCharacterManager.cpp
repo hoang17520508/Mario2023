@@ -26,7 +26,9 @@ int CSymbolCharacterManager::GetAniIdIcon(string icon) {
     unordered_map<string, int> icon_to_ani_id = {
         {"CLOCK", ID_ANI_CLOCK_ICON}, {"DOLAR", ID_ANI_DOLAR_ICON},
         {"LIFE", ID_ANI_LIFE_ICON}, {"X", ID_ANI_X_ICON},
-        {"RED ARROW", ID_ANI_RED_ARROW_ICON}
+        {"RED ARROW", ID_ANI_RED_ARROW_ICON},{"BLACK ARROW", ID_ANI_ARROW_ICON_BLACK},
+        {"WHITE ARROW", ID_ANI_ARROW_ICON_WHITE},{"WHITE POWER", ID_ANI_FULL_POWER_ICON_WHITE},
+        {"BLACK POWER", ID_ANI_FULL_POWER_ICON_BLACK},
     };
 
     return icon_to_ani_id[icon];

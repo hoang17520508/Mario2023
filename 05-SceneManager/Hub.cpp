@@ -1,6 +1,7 @@
 #pragma once
-#include "Hub.h"
-
+#include "PlayScene.h"
+#include "debug.h"
+#include "Mario.h"
 
 void CHub::RenderLife() {
 	float top, left;
@@ -28,7 +29,27 @@ void CHub::RenderPoint() {
 	float point_y = top + 15;
 	CSymbolCharacterManager::RenderNumber(100, point_x, point_y, 6);
 };
-void CHub::RenderPower() {};
+void CHub::RenderPower() {
+	float top, left;
+	top = GetTop();
+	left = GetLeft();
+	float power_y = top + 8;
+	float power_x = left + 63;
+	CMario* mario = (CMario*)((LPPLAYSCENE)CGame::GetInstance()->GetCurrentScene())->GetPlayer();
+	int power = int(mario->GetPower());
+	DebugOut(L">>> Mario power >>> %d", power);
+	for (int i = 0; i < 7; i++){
+		CSymbolCharacterManager::RenderIcon("BLACK ARROW", power_x + i*HUD_CHAR_BBOX_WIDTH +3, power_y);
+	}
+	for (int i = 0; i < power; i++) {
+		CSymbolCharacterManager::RenderIcon("WHITE ARROW", power_x + i * HUD_CHAR_BBOX_WIDTH + 3, power_y);
+	}
+	CSymbolCharacterManager::RenderIcon("BLACK POWER", power_x + 8 * HUD_CHAR_BBOX_WIDTH, power_y);
+	if (power == 8)
+	{
+		CSymbolCharacterManager::RenderIcon("WHITE POWER", power_x + 8 * HUD_CHAR_BBOX_WIDTH, power_y);
+	}
+};
 void CHub::RenderWordName() {
 	float top, left;
 	top = GetTop();
@@ -72,6 +93,7 @@ void CHub::Render()
 	RenderLife();
 	RenderPoint();
 	RenderTimeOut();
+	RenderPower();
 	//RenderBoundingBox();
 }
 

@@ -602,3 +602,11 @@ void CMario::SetLevel(int l)
 	level = l;
 }
 
+int CMario::GetPower() {
+	if (abs(vx) <= MARIO_WALKING_SPEED) return 0;
+	else
+	{
+
+		return int(abs(vx)/((MARIO_RUNNING_SPEED) / 8));
+	}
+}

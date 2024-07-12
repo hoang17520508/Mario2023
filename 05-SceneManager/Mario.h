@@ -189,6 +189,7 @@ public:
 	{ 
 		return (state != MARIO_STATE_DIE); 
 	}
+	virtual int GetPower();
 
 	int IsBlocking() { return (state != MARIO_STATE_DIE && untouchable==0); }
 
