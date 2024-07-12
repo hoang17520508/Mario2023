@@ -43,10 +43,9 @@ void CSymbolCharacterManager::RenderIcon(string icon, float x, float y) {
 
 }
 
-void CSymbolCharacterManager::RenderNumber(int number, float x, float y) {
+void CSymbolCharacterManager::RenderNumber(int number, float x, float y, int min_digit) {
     string str = to_string(number);
-
-    if (str.length() < 0) {
+    for (int i = str.length(); i < min_digit; i++) {
         str = "0" + str;
     }
 

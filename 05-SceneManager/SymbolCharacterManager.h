@@ -104,6 +104,6 @@ public:
 	CSymbolCharacterManager() {}
 
 	static void RenderIcon(string icon, float x, float y);
-	static void RenderNumber(int number, float x, float y);
+	static void RenderNumber(int number, float x, float y, int min_degit=0);
 	static void RenderString(string str, float x, float y);
 };

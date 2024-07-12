@@ -18,9 +18,16 @@ void CHub::RenderLife() {
 	CSymbolCharacterManager::RenderIcon("LIFE", icon_life_x, icon_life_y);
 	CSymbolCharacterManager::RenderIcon("X", icon_x_x, icon_x_y);
 	//hardcode data
-	CSymbolCharacterManager::RenderNumber(3, icon_number_life_x, icon_number_life_y);
+	CSymbolCharacterManager::RenderNumber(3, icon_number_life_x - 10, icon_number_life_y);
 };
-void CHub::RenderPoint() {};
+void CHub::RenderPoint() {
+	float top, left;
+	top = GetTop();
+	left = GetLeft();
+	float point_x = left + 69;
+	float point_y = top + 15;
+	CSymbolCharacterManager::RenderNumber(100, point_x, point_y, 6);
+};
 void CHub::RenderPower() {};
 void CHub::RenderWordName() {
 	float top, left;
@@ -29,7 +36,7 @@ void CHub::RenderWordName() {
 	float world_name_y = top + 5;
 	float world_name_x = left + 55;
 	CSymbolCharacterManager::RenderString("WORLD", world_name_x - HUD_CHAR_BBOX_WIDTH * 5, world_name_y);
-	CSymbolCharacterManager::RenderNumber(1, world_name_x - HUD_CHAR_BBOX_WIDTH * 5 + 40, world_name_y);
+	CSymbolCharacterManager::RenderNumber(1, world_name_x - HUD_CHAR_BBOX_WIDTH * 5 + 38, world_name_y);
 };
 void CHub::RenderCoin() {
 	float top, left;
@@ -43,6 +50,18 @@ void CHub::RenderCoin() {
 	CSymbolCharacterManager::RenderNumber(10,coin_x,coin_y);
 };
 void CHub::RenderCard() {};
+void CHub::RenderTimeOut() {
+	float top, left;
+	top = GetTop();
+	left = GetLeft();
+	float time_x = left + 139;
+	float time_y = top + 15;
+	float clock_x = left + 129;
+	float clock_y = top + 19;
+	CSymbolCharacterManager::RenderIcon("CLOCK", clock_x, clock_y);
+	CSymbolCharacterManager::RenderNumber(100, time_x, time_y,3);
+
+};
 
 void CHub::Render()
 {
@@ -51,6 +70,8 @@ void CHub::Render()
 	RenderCoin();
 	RenderWordName();
 	RenderLife();
+	RenderPoint();
+	RenderTimeOut();
 	//RenderBoundingBox();
 }
 
