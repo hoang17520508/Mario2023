@@ -176,7 +176,7 @@ public:
 		isOnPlatform = false;
 		coin = 0;
 		point = 0;
-		life = 3;
+		life = 4;
 	}
 	void SetCanHoldKoopa() { can_hold_koopa = true; }
 	void ThrowKoopa() { can_hold_koopa = false; }
@@ -188,6 +188,18 @@ public:
 	int IsCollidable()
 	{ 
 		return (state != MARIO_STATE_DIE); 
+	}
+	int GetCoin() {
+		return coin;
+	}
+	int GetLife() {
+		return life;
+	}
+	int GetPoint() {
+		return point;
+	}
+	void CollectCoin() {
+		coin += 1;
 	}
 	virtual int GetPower();
 

@@ -49,6 +49,7 @@ void CQuestionBrick::SetState(int state)
 				CCoin* coin = (CCoin*)scene->AddObject(new CCoin(x, y - QUESTION_BRICK_BBOX_HEIGHT / 2));
 				coin->SetPosition(x, y);
 				coin->SetState(2);
+				mario->CollectCoin();
 				break;
 			}
 			case MARIO_LEVEL_SMALL:
@@ -62,6 +63,7 @@ void CQuestionBrick::SetState(int state)
 			CCoin* coin = (CCoin*)scene->AddObject(new CCoin(x, y - QUESTION_BRICK_BBOX_HEIGHT / 2));
 			coin->SetPosition(x, y);
 			coin->SetState(2);
+			mario->CollectCoin();
 		}
 
 		// TODO: case leaf handle later

@@ -94,6 +94,7 @@ void CMario::OnCollisionWithGoomba(LPCOLLISIONEVENT e)
 		{
 			goomba->SetState(GOOMBA_STATE_DIE);
 			vy = -MARIO_JUMP_DEFLECT_SPEED;
+			point += 100;
 		}
 	}
 	else // hit by Goomba
@@ -169,6 +170,7 @@ void CMario::OnCollisionWithKoopa(LPCOLLISIONEVENT e)
 		{
 			koopa->SetState(KOOPA_STATE_DEFEND);
 			vy = -MARIO_JUMP_DEFLECT_SPEED;
+			point += 100;
 		}
 	}
 	else // hit by Goomba
@@ -241,6 +243,7 @@ void CMario::OnCollisionWithQuestionBrick(LPCOLLISIONEVENT e)
 	if (e->ny > 0)
 	{
 		question_brick->OpenQuestionBrick();
+		point += 100;
 		DebugOut(L">>> Mario touch bottom question brick >>> \n");
 	}
 	
@@ -260,6 +263,7 @@ void CMario::OnCollisionWithMushroom(LPCOLLISIONEVENT e)
 	DebugOut(L">>> Mario touch mushroom >>> \n");
 	level = MARIO_LEVEL_BIG;
 	vy=-0.2;
+	point += 100;
 	e->obj->Delete();
 }
 
@@ -268,6 +272,7 @@ void CMario::OnCollisionWithLeaf(LPCOLLISIONEVENT e)
 	DebugOut(L">>> Mario touch  leaf >>> \n");
 	level = MARIO_LEVEL_TAIL;
 	vy = -0.2;
+	point += 100;
 	e->obj->Delete();
 }
 
@@ -558,6 +563,7 @@ void CMario::SetState(int state)
 		vy = -MARIO_JUMP_DEFLECT_SPEED;
 		vx = 0;
 		ax = 0;
+		life -= 1;
 		break;
 	}
 

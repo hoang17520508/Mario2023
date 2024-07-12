@@ -15,19 +15,22 @@ void CHub::RenderLife() {
 
 	float icon_x_x = icon_life_x + HUD_LIFE_BBOX_WIDTH / 2 + HUD_X_ICON_BBOX_WIDTH / 2 + 3;
 	float icon_x_y = icon_life_y + 1;
-
+	CMario* mario = (CMario*)((LPPLAYSCENE)CGame::GetInstance()->GetCurrentScene())->GetPlayer();
+	int life = mario->GetLife();
 	CSymbolCharacterManager::RenderIcon("LIFE", icon_life_x, icon_life_y);
 	CSymbolCharacterManager::RenderIcon("X", icon_x_x, icon_x_y);
 	//hardcode data
-	CSymbolCharacterManager::RenderNumber(3, icon_number_life_x - 10, icon_number_life_y);
+	CSymbolCharacterManager::RenderNumber(life, icon_number_life_x - 10, icon_number_life_y);
 };
 void CHub::RenderPoint() {
 	float top, left;
 	top = GetTop();
 	left = GetLeft();
+	CMario* mario = (CMario*)((LPPLAYSCENE)CGame::GetInstance()->GetCurrentScene())->GetPlayer();
+	int point = mario->GetPoint();
 	float point_x = left + 69;
 	float point_y = top + 15;
-	CSymbolCharacterManager::RenderNumber(100, point_x, point_y, 6);
+	CSymbolCharacterManager::RenderNumber(point, point_x, point_y, 6);
 };
 void CHub::RenderPower() {
 	float top, left;
@@ -63,12 +66,14 @@ void CHub::RenderCoin() {
 	float top, left;
 	top = GetTop();
 	left = GetLeft();
+	CMario* mario = (CMario*)((LPPLAYSCENE)CGame::GetInstance()->GetCurrentScene())->GetPlayer();
 	float coin_x = left + 140;
 	float coin_y = top + 5;
 	float dolar_y = top + 7;
+	int coin = mario->GetCoin();
 	CSymbolCharacterManager::RenderIcon("DOLAR",coin_x - HUD_CHAR_BBOX_WIDTH - 3 , dolar_y);
 	//hardcode render 10 coin point handle integrate later
-	CSymbolCharacterManager::RenderNumber(10,coin_x,coin_y);
+	CSymbolCharacterManager::RenderNumber(coin,coin_x,coin_y);
 };
 void CHub::RenderCard() {};
 void CHub::RenderTimeOut() {
