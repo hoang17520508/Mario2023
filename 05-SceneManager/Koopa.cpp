@@ -12,7 +12,7 @@ CKoopa::CKoopa(float x, float y) :CGameObject(x, y)
 	InBrick = new CInvisibleBrick(x, y);
 	this->ay = KOOPA_GRAVITY;
 	die_start = -1;
-	SetState(KOOPA_STATE_DEFEND);
+	SetState(KOOPA_STATE_WALKING);
 }
 
 void CKoopa::GetBoundingBox(float& left, float& top, float& right, float& bottom)
@@ -144,6 +144,8 @@ void CKoopa::Render()
 	InBrick->Render();
 	RenderBoundingBox();
 }
+
+
 
 void CKoopa::SetState(int state)
 {

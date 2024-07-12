@@ -238,7 +238,7 @@ void CMario::OnCollisionWithWingGoomba(LPCOLLISIONEVENT e)
 	{
 		if (goomba->GetState() != GOOMBA_STATE_DIE)
 		{
-			goomba->SetState(GOOMBA_STATE_DIE);
+			goomba->beAttacked();
 			vy = -MARIO_JUMP_DEFLECT_SPEED;
 		}
 	}

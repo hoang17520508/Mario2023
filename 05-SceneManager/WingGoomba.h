@@ -13,10 +13,12 @@
 
 #define WINGGOOMBA_STATE_FLY 300
 #define WINGGOOMBA_STATE_WALKING 100
+#define NORMALGOOMBA_STATE_WALKING 101
 #define WINGGOOMBA_STATE_DIE 200
 
 #define ID_ANI_WINGGOOMBA_WALKING 600003
 #define ID_ANI_WINGGOOMBA_DIE 5001
+#define ID_ANI_NORMALGOOMBA_STATE_WALKING 5000
 
 
 class CWingGoomba : public CGameObject
@@ -24,6 +26,7 @@ class CWingGoomba : public CGameObject
 protected:
 	float ax;
 	float ay;
+	BOOLEAN has_wing;
 
 	ULONGLONG die_start;
 	ULONGLONG time_jump_start;
@@ -41,4 +44,5 @@ protected:
 public:
 	CWingGoomba(float x, float y);
 	virtual void SetState(int state);
+	void beAttacked();
 };
