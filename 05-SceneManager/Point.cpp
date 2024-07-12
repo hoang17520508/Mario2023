@@ -24,7 +24,7 @@ void CPoint::SetState(int state)
 	case POINT_STATE_JUMP:
 		vx = 0;
 		ay = 0.001f;
-		vy = -0.31f;
+		vy = -0.2f;
 		break;
 	}
 }

@@ -12,17 +12,17 @@ CKoopa::CKoopa(float x, float y) :CGameObject(x, y)
 	InBrick = new CInvisibleBrick(x, y);
 	this->ay = KOOPA_GRAVITY;
 	die_start = -1;
-	SetState(KOOPA_STATE_WALKING);
+	SetState(KOOPA_STATE_DEFEND);
 }
 
 void CKoopa::GetBoundingBox(float& left, float& top, float& right, float& bottom)
 {
-	if (state == KOOPA_STATE_DIE)
+	if (state == KOOPA_STATE_DEFEND)
 	{
 		left = x - KOOPA_BBOX_WIDTH / 2;
-		top = y - KOOPA_BBOX_HEIGHT_DIE / 2;
+		top = y - KOOPA_DEFEND_BBOX_HEIGHT / 2;
 		right = left + KOOPA_BBOX_WIDTH;
-		bottom = top + KOOPA_BBOX_HEIGHT_DIE;
+		bottom = top + KOOPA_DEFEND_BBOX_HEIGHT;
 	}
 	else
 	{
@@ -142,7 +142,7 @@ void CKoopa::Render()
 
 	CAnimations::GetInstance()->Get(aniId)->Render(x, y);
 	InBrick->Render();
-	//RenderBoundingBox();
+	RenderBoundingBox();
 }
 
 void CKoopa::SetState(int state)
@@ -167,7 +167,7 @@ void CKoopa::SetState(int state)
 		break;
 	case KOOPA_STATE_BE_KICKING:
 		refresh_time = GetTickCount64();
-		vx = nx*KOOPA_WALKING_SPEED * 3;
+		vx = nx*KOOPA_WALKING_SPEED * 5;
 		break;
 	}
 

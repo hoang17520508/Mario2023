@@ -155,7 +155,7 @@ void CMario::OnCollisionWithBullet(LPCOLLISIONEVENT e)
 	{
 		if (level > MARIO_LEVEL_SMALL)
 		{
-			level = MARIO_LEVEL_SMALL;
+			level --;
 			StartUntouchable();
 		}
 		else
@@ -172,7 +172,7 @@ void CMario ::OnCollisionWithPlant(LPCOLLISIONEVENT e) {
 	{
 		if (level > MARIO_LEVEL_SMALL)
 		{
-			level = MARIO_LEVEL_SMALL;
+			level --;
 			StartUntouchable();
 		}
 		else
@@ -217,7 +217,7 @@ void CMario::OnCollisionWithKoopa(LPCOLLISIONEVENT e)
 			{
 				if (level > MARIO_LEVEL_SMALL)
 				{
-					level = MARIO_LEVEL_SMALL;
+					level --;
 					StartUntouchable();
 				}
 				else
@@ -250,7 +250,7 @@ void CMario::OnCollisionWithWingGoomba(LPCOLLISIONEVENT e)
 			{
 				if (level > MARIO_LEVEL_SMALL)
 				{
-					level = MARIO_LEVEL_SMALL;
+					level --;
 					StartUntouchable();
 				}
 				else
