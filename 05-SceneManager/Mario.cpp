@@ -38,6 +38,23 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 
 	isOnPlatform = false;
 
+	if (time_start == 0)
+	{
+		time_start = GetTickCount64();
+	}
+	ULONGLONG time_to_count = GetTickCount64() - time_start;
+	if (time > 0 && time_to_count > 1000)
+	{
+		time--;
+		if (time == 0)
+		{
+			time_start = 0;
+			SetState(MARIO_STATE_DIE);
+			return;
+		}
+		time_start = GetTickCount64();
+	}
+
 	CCollision::GetInstance()->Process(this, dt, coObjects);
 }
 

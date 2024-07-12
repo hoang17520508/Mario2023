@@ -84,8 +84,10 @@ void CHub::RenderTimeOut() {
 	float time_y = top + 15;
 	float clock_x = left + 129;
 	float clock_y = top + 19;
+	CMario* mario = (CMario*)((LPPLAYSCENE)CGame::GetInstance()->GetCurrentScene())->GetPlayer();
+	int time = mario->GetTime();
 	CSymbolCharacterManager::RenderIcon("CLOCK", clock_x, clock_y);
-	CSymbolCharacterManager::RenderNumber(100, time_x, time_y,3);
+	CSymbolCharacterManager::RenderNumber(time, time_x, time_y,3);
 
 };
 

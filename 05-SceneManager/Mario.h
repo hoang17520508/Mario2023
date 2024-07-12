@@ -144,6 +144,8 @@ class CMario : public CGameObject
 	int point;
 	int power;
 	int life;
+	ULONGLONG time;
+	ULONGLONG time_start;
 
 
 
@@ -177,6 +179,7 @@ public:
 		coin = 0;
 		point = 0;
 		life = 4;
+		time = 300;
 	}
 	void SetCanHoldKoopa() { can_hold_koopa = true; }
 	void ThrowKoopa() { can_hold_koopa = false; }
@@ -197,6 +200,9 @@ public:
 	}
 	int GetPoint() {
 		return point;
+	}
+	int GetTime() {
+		return time;
 	}
 	void CollectCoin() {
 		coin += 1;
