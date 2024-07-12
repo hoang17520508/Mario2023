@@ -142,7 +142,7 @@ void CKoopa::Render()
 
 	CAnimations::GetInstance()->Get(aniId)->Render(x, y);
 	InBrick->Render();
-	RenderBoundingBox();
+	//RenderBoundingBox();
 }
 
 

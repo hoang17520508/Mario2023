@@ -17,7 +17,7 @@ void CLeaf::Render()
 	if (animations->Get(aniId))
 		animations->Get(aniId)->Render(x, y);
 
-	RenderBoundingBox();
+//RenderBoundingBox();
 }
 
 
