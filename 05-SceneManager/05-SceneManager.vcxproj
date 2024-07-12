@@ -169,6 +169,7 @@
     <ClCompile Include="Plant.cpp" />
     <ClCompile Include="Platform.cpp" />
     <ClCompile Include="PlayScene.cpp" />
+    <ClCompile Include="Point.cpp" />
     <ClCompile Include="Portal.cpp" />
     <ClCompile Include="QuestionBrick.cpp" />
     <ClCompile Include="SampleKeyEventHandler.cpp" />
@@ -206,6 +207,7 @@
     <ClInclude Include="Plant.h" />
     <ClInclude Include="Platform.h" />
     <ClInclude Include="PlayScene.h" />
+    <ClInclude Include="Point.h" />
     <ClInclude Include="Portal.h" />
     <ClInclude Include="QuestionBrick.h" />
     <ClInclude Include="SampleKeyEventHandler.h" />
@@ -233,6 +235,7 @@
     <Text Include="Mushroom.txt" />
     <Text Include="pipe.txt" />
     <Text Include="Plant.txt" />
+    <Text Include="point.txt" />
     <Text Include="question_brick.txt" />
     <Text Include="scene0005.txt" />
     <Text Include="scene01.txt" />

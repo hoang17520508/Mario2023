@@ -213,6 +213,7 @@ public:
 
 	void OnNoCollision(DWORD dt);
 	void OnCollisionWith(LPCOLLISIONEVENT e);
+	void AddPoint();
 
 	void SetLevel(int l);
 	int GetLevel() { return  level; };

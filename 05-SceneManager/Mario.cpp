@@ -15,6 +15,8 @@
 #include "Plant.h"
 #include "Bullet.h"
 #include "Leaf.h"
+#include "PlayScene.h"
+#include "Point.h"
 
 #include "Collision.h"
 
@@ -100,6 +102,13 @@ void CMario::OnCollisionWith(LPCOLLISIONEVENT e)
 	
 }
 
+void CMario::AddPoint() {
+	LPPLAYSCENE scene = (LPPLAYSCENE)CGame::GetInstance()->GetCurrentScene();
+	CPoint* point = (CPoint*)scene->AddObject(new CPoint(x + 10, y - 30));
+	point->Render();
+	point->SetState(2);
+}
+
 void CMario::OnCollisionWithGoomba(LPCOLLISIONEVENT e)
 {
 	CGoomba* goomba = dynamic_cast<CGoomba*>(e->obj);
@@ -112,6 +121,8 @@ void CMario::OnCollisionWithGoomba(LPCOLLISIONEVENT e)
 			goomba->SetState(GOOMBA_STATE_DIE);
 			vy = -MARIO_JUMP_DEFLECT_SPEED;
 			point += 100;
+			AddPoint();
+		//	point->Delete();
 		}
 	}
 	else // hit by Goomba
@@ -188,6 +199,7 @@ void CMario::OnCollisionWithKoopa(LPCOLLISIONEVENT e)
 			koopa->SetState(KOOPA_STATE_DEFEND);
 			vy = -MARIO_JUMP_DEFLECT_SPEED;
 			point += 100;
+			AddPoint();
 		}
 	}
 	else // hit by Goomba
@@ -282,6 +294,7 @@ void CMario::OnCollisionWithMushroom(LPCOLLISIONEVENT e)
 	vy=-0.2;
 	point += 100;
 	e->obj->Delete();
+	AddPoint();
 }
 
 void CMario::OnCollisionWithLeaf(LPCOLLISIONEVENT e)
@@ -291,6 +304,7 @@ void CMario::OnCollisionWithLeaf(LPCOLLISIONEVENT e)
 	vy = -0.2;
 	point += 100;
 	e->obj->Delete();
+	AddPoint();
 }
 
 void CMario::OnCollisionWithPortal(LPCOLLISIONEVENT e)

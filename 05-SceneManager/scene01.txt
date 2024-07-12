@@ -15,6 +15,7 @@ plant.txt
 bullet.txt
 leaf.txt
 hub.txt
+point.txt
 #
 [OBJECTS]
 # type	x	y	extra_settings per object type

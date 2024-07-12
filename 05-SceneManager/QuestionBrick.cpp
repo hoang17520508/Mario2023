@@ -64,6 +64,7 @@ void CQuestionBrick::SetState(int state)
 			coin->SetPosition(x, y);
 			coin->SetState(2);
 			mario->CollectCoin();
+			mario->AddPoint();
 		}
 
 		// TODO: case leaf handle later

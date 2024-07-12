@@ -123,6 +123,9 @@
     <ClCompile Include="SymbolCharacterManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Point.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -230,6 +233,9 @@
     <ClInclude Include="SymbolCharacterManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Point.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="brick.txt">
@@ -280,6 +286,9 @@
       <Filter>Source Files</Filter>
     </Text>
     <Text Include="hub.txt">
+      <Filter>Source Files</Filter>
+    </Text>
+    <Text Include="point.txt">
       <Filter>Source Files</Filter>
     </Text>
   </ItemGroup>
