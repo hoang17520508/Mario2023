@@ -50,9 +50,9 @@ BOOLEAN CGameObject::CheckInCam() {
 	CGame::GetInstance()->GetCamPos(cam_x, cam_y);
 	float l, t, r, b;
 	GetBoundingBox(l, t, r, b);
-	if (r < cam_x || l > cam_x + 320)
+	if (r < cam_x || l > cam_x + 250)
 		return false;
-	if (b  < cam_y || t > cam_y + 240)
+	if (b  < cam_y || t > cam_y + 265)
 		return false;
 	return true;
 }
